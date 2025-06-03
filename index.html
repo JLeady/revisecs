@@ -6,6 +6,14 @@
     <title>ByteBridge</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+      const supabase = supabase.createClient(
+        'https://xcysobojyflzhocnuskx.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhjeXNvYm9qeWZsemhvY251c2t4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NjcyMTgsImV4cCI6MjA2NDU0MzIxOH0.OPFmo1HRPH5bCnxE9ETUeJzv7Pr0qsM8wbPZ2yGPsMs'
+      );
+    </script>
+
     <style>
       body {
         font-family: 'Inter', sans-serif;
@@ -41,15 +49,15 @@
             <span class="text-xl font-semibold text-gray-900 dark:text-white">ByteBridge</span>
           </div>
           <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-700 dark:text-gray-300">
-            <a href="#features" class="hover:text-accent">Features</a>
-            <a href="#courses" class="hover:text-accent">Courses</a>
-            <a href="#about" class="hover:text-accent">About</a>
-            <a href="#contact" class="hover:text-accent">Contact</a>
+            <a href="features.html" class="hover:text-accent">Features</a>
+            <a href="courses.html" class="hover:text-accent">Courses</a>
+            <a href="about.html" class="hover:text-accent">About</a>
+            <a href="contact.html" class="hover:text-accent">Contact</a>
           </nav>
           <div class="space-x-4 text-sm flex items-center">
             <button id="themeToggle" class="text-gray-600 dark:text-gray-300 hover:text-orange transition" title="Toggle Dark Mode">🌓</button>
-            <a href="#" class="text-gray-600 dark:text-gray-300 hover:text-accent">Login</a>
-            <a href="#" class="bg-accent text-white px-4 py-2 rounded-md hover:bg-orange transition">Sign Up</a>
+            <a href="login.html" class="text-gray-600 dark:text-gray-300 hover:text-accent">Login</a>
+            <a href="signup.html" class="bg-accent text-white px-4 py-2 rounded-md hover:bg-orange transition">Sign Up</a>
           </div>
         </div>
       </header>
