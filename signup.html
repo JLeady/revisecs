@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up - ByteBridge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+  <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center">Create Your Account</h2>
+    <form id="signup-form" class="space-y-4">
+      <input type="text" id="full-name" placeholder="Full Name" required class="w-full px-4 py-2 border rounded" />
+      <input type="email" id="email" placeholder="Email" required class="w-full px-4 py-2 border rounded" />
+      <input type="password" id="password" placeholder="Password" required class="w-full px-4 py-2 border rounded" />
+
+      <div>
+        <label class="block font-medium mb-1">Choose a Plan:</label>
+        <select id="plan" required class="w-full px-4 py-2 border rounded">
+          <option value="free">Free</option>
+          <option value="standard">Standard (£4.99/mo)</option>
+          <option value="premium">Premium (£8.99/mo)</option>
+        </select>
+      </div>
+
+      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+        Sign Up
+      </button>
+    </form>
+    <p id="error-msg" class="text-red-500 text-sm mt-4"></p>
+  </div>
+
+  <script>
+    const SUPABASE_URL = 'https://your-project.supabase.co';
+    const SUPABASE_KEY = 'public-anon-key'; // Replace with your anon/public key
+    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const signupForm = document.getElementById('signup-form');
+    const errorMsg = document.getElementById('error-msg');
+
+    signupForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const fullName = document.getElementById('full-name').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const plan = document.getElementById('plan').value;
+
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          data: {
+            full_name: fullName,
+            plan: plan
+          }
+        }
+      });
+
+      if (error) {
+        errorMsg.textContent = error.message;
+        return;
+      }
+
+      // Create a record in 'profiles' table manually (if not using auth hooks)
+      const { user } = data;
+      const { error: profileError } = await supabase.from('profiles').insert([
+        {
+          id: user.id,
+          full_name: fullName,
+          plan: plan
+        }
+      ]);
+
+      if (profileError) {
+        errorMsg.textContent = profileError.message;
+        return;
+      }
+
+      // Redirect after success
+      window.location.href = '/dashboard.html';
+    });
+  </script>
+</body>
+</html>
