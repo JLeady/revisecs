@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Courses - ByteBridge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>body { font-family: 'Inter', sans-serif; }</style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 w-full bg-white border-b shadow-sm z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <img src="assets/ByteBridge_Logo.png" alt="Logo" class="h-8">
+        <span class="text-xl font-semibold">ByteBridge</span>
+      </div>
+      <nav class="hidden md:flex space-x-6 text-sm font-medium text-gray-700">
+        <a href="features.html" class="hover:text-blue-600">Features</a>
+        <a href="courses.html" class="text-blue-600 font-semibold">Courses</a>
+        <a href="about.html" class="hover:text-blue-600">About</a>
+        <a href="contact.html" class="hover:text-blue-600">Contact</a>
+      </nav>
+      <div class="space-x-4 text-sm">
+        <a href="login.html" class="text-gray-600 hover:text-blue-600">Login</a>
+        <a href="signup.html" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Sign Up</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 bg-gradient-to-br from-white to-blue-50 text-center">
+    <div class="max-w-3xl mx-auto px-6">
+      <h1 class="text-4xl font-bold mb-4">Courses Designed For Your Success</h1>
+      <p class="text-lg text-gray-600">Choose from GCSE or A-Level pathways — all tailored to your exam board and syllabus.</p>
+    </div>
+  </section>
+
+  <!-- Course Overview -->
+  <section class="py-20 px-6 bg-white">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+      <div class="bg-gray-50 p-8 rounded-xl shadow hover:shadow-md transition">
+        <h2 class="text-2xl font-semibold mb-3">GCSE Computer Science</h2>
+        <p class="text-gray-600 mb-4">Ideal for AQA, OCR and Edexcel. Covers systems architecture, networks, databases, pseudocode, and more.</p>
+        <ul class="text-gray-700 list-disc list-inside">
+          <li>Flashcards for every topic</li>
+          <li>Real exam-style questions</li>
+          <li>Clear pseudocode breakdowns</li>
+          <li>Progressive recap quizzes</li>
+        </ul>
+      </div>
+
+      <div class="bg-gray-50 p-8 rounded-xl shadow hover:shadow-md transition">
+        <h2 class="text-2xl font-semibold mb-3">A-Level Computer Science</h2>
+        <p class="text-gray-600 mb-4">Perfect for advancing your CS knowledge. Includes object-oriented programming, algorithms, and big data.</p>
+        <ul class="text-gray-700 list-disc list-inside">
+          <li>Full walkthroughs of advanced topics</li>
+          <li>Code examples in Python/Java</li>
+          <li>Database and SQL revision</li>
+          <li>Exam-style structured questions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-16 px-6 bg-gray-50 text-center text-sm text-gray-500 border-t">
+    <p class="mb-3">ByteBridge — Learn. Revise. Succeed.</p>
+    <p class="text-xs">© 2025 ByteBridge. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
