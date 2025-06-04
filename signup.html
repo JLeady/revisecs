@@ -32,9 +32,10 @@
   </div>
 
   <script>
-    const SUPABASE_URL = 'https://your-project.supabase.co';
-    const SUPABASE_KEY = 'public-anon-key'; // Replace with your anon/public key
-    const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const supabase = supabase.createClient(
+        'https://xcysobojyflzhocnuskx.supabase.co',
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhjeXNvYm9qeWZsemhvY251c2t4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NjcyMTgsImV4cCI6MjA2NDU0MzIxOH0.OPFmo1HRPH5bCnxE9ETUeJzv7Pr0qsM8wbPZ2yGPsMs'
+      );
 
     const signupForm = document.getElementById('signup-form');
     const errorMsg = document.getElementById('error-msg');
