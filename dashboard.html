@@ -21,9 +21,13 @@
         <img src="assets/ReviseCSlogo.png" alt="ReviseCS Logo" class="h-8">
         <span class="text-xl font-bold">Revise<span class="text-blue-600">CS</span></span>
       </div>
-      <button id="logoutBtn" class="text-sm text-red-500 hover:underline">Logout</button>
+      <div class="flex items-center space-x-4">
+        <span id="user-email" class="text-sm text-gray-700"></span>
+        <button id="logoutBtn" class="text-sm text-red-500 hover:underline">Logout</button>
+      </div>
     </div>
   </header>
+
  
   <!-- Main Content -->
   <main class="pt-24 max-w-6xl mx-auto px-6">
@@ -60,29 +64,32 @@
      
     // Ensure user is logged in and load user data
     async function checkUser() {
-      try {
-        const { data, error } = await client.auth.getUser();
-        if (error || !data.user) {
-          window.location.href = 'login.html';
-          return;
-        }
-        
-        // Load user profile data from your profiles table
-        const { data: profile, error: profileError } = await client
-          .from('profiles')
-          .select('username, plan')
-          .eq('id', data.user.id)
-          .single();
-        
-        if (profile && profile.username) {
-          document.getElementById('user-name').textContent = profile.username + ' 👋';
-        }
-        
-      } catch (error) {
-        console.error('Auth check error:', error);
-        window.location.href = 'login.html';
-      }
+  try {
+    const { data, error } = await client.auth.getUser();
+
+    if (error || !data.user) {
+      window.location.href = 'login.html';
+    } else {
+      document.getElementById('user-email').textContent = data.user.email;
     }
+
+    // Load user profile data from your profiles table
+    const { data: profile, error: profileError } = await client
+      .from('profiles')
+      .select('username, plan')
+      .eq('id', data.user.id)
+      .single();
+
+    if (profile && profile.username) {
+      document.getElementById('user-name').textContent = profile.username + ' 👋';
+    }
+
+  } catch (error) {
+    console.error('Auth check error:', error);
+    window.location.href = 'login.html';
+  }
+}
+
      
     checkUser();
      
