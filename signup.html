@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sign Up - ByteBridge</title>
+  <title>Sign Up - Revise CS</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  
+  <!-- Load Supabase BEFORE anything else -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
   <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
@@ -14,7 +16,7 @@
       <input type="text" id="full-name" placeholder="Full Name" required class="w-full px-4 py-2 border rounded" />
       <input type="email" id="email" placeholder="Email" required class="w-full px-4 py-2 border rounded" />
       <input type="password" id="password" placeholder="Password" required class="w-full px-4 py-2 border rounded" />
-
+             
       <div>
         <label class="block font-medium mb-1">Choose a Plan:</label>
         <select id="plan" required class="w-full px-4 py-2 border rounded">
@@ -23,32 +25,32 @@
           <option value="premium">Premium (£8.99/mo)</option>
         </select>
       </div>
-
+       
       <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
         Sign Up
       </button>
     </form>
     <p id="error-msg" class="text-red-500 text-sm mt-4"></p>
   </div>
-
+ 
   <script>
-    const supabase = supabase.createClient(
-        'https://xcysobojyflzhocnuskx.supabase.co',
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhjeXNvYm9qeWZsemhvY251c2t4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NjcyMTgsImV4cCI6MjA2NDU0MzIxOH0.OPFmo1HRPH5bCnxE9ETUeJzv7Pr0qsM8wbPZ2yGPsMs'
-      );
-
-    const signupForm = document.getElementById('signup-form');
-    const errorMsg = document.getElementById('error-msg');
-
-    signupForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      const fullName = document.getElementById('full-name').value;
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-      const plan = document.getElementById('plan').value;
-
-      const { data, error } = await supabase.auth.signUp({
+  // Initialize Supabase client
+  const client = supabase.createClient(
+    'https://xcysobojyflzhocnuskx.supabase.co',
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhjeXNvYm9qeWZsemhvY251c2t4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NjcyMTgsImV4cCI6MjA2NDU0MzIxOH0.OPFmo1HRPH5bCnxE9ETUeJzv7Pr0qsM8wbPZ2yGPsMs'
+  );
+ 
+  document.getElementById('signup-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const fullName = document.getElementById('full-name').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const plan = document.getElementById('plan').value;
+    
+    try {
+      // Step 1: Create the user account
+      const { data: authData, error: authError } = await client.auth.signUp({
         email,
         password,
         options: {
@@ -58,30 +60,41 @@
           }
         }
       });
-
-      if (error) {
-        errorMsg.textContent = error.message;
+      
+      if (authError) {
+        document.getElementById('error-msg').innerText = authError.message;
         return;
       }
-
-      // Create a record in 'profiles' table manually (if not using auth hooks)
-      const { user } = data;
-      const { error: profileError } = await supabase.from('profiles').insert([
-        {
-          id: user.id,
-          full_name: fullName,
-          plan: plan
+      
+      // Step 2: If auth successful, insert user profile data into your profiles table
+      if (authData.user) {
+        const { error: profileError } = await client
+          .from('profiles')
+          .insert([
+            {
+              id: authData.user.id, // Use the auth user ID as primary key
+              username: fullName, // Using full name as username
+              plan: plan,
+              created_at: new Date().toISOString()
+            }
+          ]);
+        
+        if (profileError) {
+          console.error('Profile creation error:', profileError);
+          document.getElementById('error-msg').innerText = 'Account created but profile setup failed. Please contact support.';
+          return;
         }
-      ]);
-
-      if (profileError) {
-        errorMsg.textContent = profileError.message;
-        return;
       }
-
-      // Redirect after success
-      window.location.href = '/dashboard.html';
-    });
-  </script>
+      
+      alert('Signup successful! Check your email for confirmation.');
+      window.location.href = 'dashboard.html';
+      
+    } catch (error) {
+      console.error('Signup error:', error);
+      document.getElementById('error-msg').innerText = 'An unexpected error occurred.';
+    }
+  });
+</script>
+ 
 </body>
 </html>
