@@ -1,141 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GCSE AQA – ReviseCS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GCSE AQA Computer Science | ReviseCS</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    function toggleContent(id) {
+    function toggleDropdown(id) {
       document.getElementById(id).classList.toggle('hidden');
     }
   </script>
 </head>
-<body class="bg-gray-50 text-gray-900 font-sans">
-
-  <!-- Header -->
-  <header class="bg-white shadow p-4 fixed w-full z-50">
-    <div class="max-w-6xl mx-auto flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <img src="assets/ReviseCSlogo.png" alt="Logo" class="h-8" />
-        <span class="text-xl font-bold">Revise<span class="text-blue-600">CS</span></span>
-      </div>
-      <a href="gcse.html" class="text-blue-600 hover:underline">← Back to GCSE</a>
+<body class="bg-gray-100 text-gray-900">
+  <header class="bg-white shadow p-4 flex justify-between items-center sticky top-0 z-10">
+    <div class="flex items-center gap-2">
+      <img src="assets/ReviseCSlogo.png" alt="Logo" class="h-8">
+      <span class="text-xl font-bold">Revise<span class="text-blue-600">CS</span></span>
     </div>
+    <a href="gcse.html" class="text-blue-600 hover:underline">← Back to GCSE</a>
   </header>
 
-  <!-- Main Content -->
-  <main class="max-w-4xl mx-auto p-6 mt-16 space-y-6">
-    <h1 class="text-3xl font-bold">AQA GCSE Computer Science Topics</h1>
+  <main class="max-w-5xl mx-auto p-6 space-y-6">
+    <h1 class="text-3xl font-bold mb-4">AQA GCSE Computer Science (8525)</h1>
 
-    <!-- 3.1 Algorithms -->
-    <div class="border rounded bg-white shadow">
-      <button onclick="toggleContent('topic-31')" class="w-full text-left px-6 py-4 text-xl font-semibold hover:bg-gray-100">3.1 Fundamentals of Algorithms</button>
-      <div id="topic-31" class="px-6 py-4 hidden space-y-3 text-gray-700">
-        <p>Students should understand the use of decomposition, abstraction, and algorithmic thinking. They should be able to interpret and produce flowcharts and pseudocode.</p>
-        <ul class="list-disc pl-6">
-          <li><strong>Decomposition & Abstraction</strong>: Breaking problems into smaller parts and focusing on the essentials.</li>
-          <li><strong>Flowcharts/Pseudocode</strong>: Represent algorithms graphically or in plain English.</li>
-          <li><strong>Searching/Sorting</strong>: Bubble, Merge, Insertion sort; Linear & Binary search.</li>
+    <!-- 3.1 Fundamentals of Algorithms -->
+    <div class="bg-white rounded shadow">
+      <button onclick="toggleDropdown('topic-3-1')" class="w-full px-6 py-4 text-left text-xl font-semibold hover:bg-gray-50">3.1 Fundamentals of Algorithms</button>
+      <div id="topic-3-1" class="hidden px-6 py-4 text-gray-700 space-y-4">
+        <h2 class="font-semibold">Representing Algorithms</h2>
+        <ul class="list-disc ml-6 space-y-2">
+          <li><strong>Pseudocode:</strong> AQA-style, structured (e.g., IF, FOR, ENDIF). Example:
+            <pre class="bg-gray-100 p-3 rounded text-sm">FOR i ← 1 TO n
+  IF x[i] > max THEN
+    max ← x[i]
+  ENDIF
+ENDFOR
+            </pre>
+          </li>
+          <li><strong>Flowcharts:</strong> Use shapes (oval start/end, rectangle process, diamond decision). <em>Insert flowchart diagram here</em>.</li>
         </ul>
+
+        <h2 class="font-semibold">Decomposition & Abstraction</h2>
+        <p>Break down problems (e.g., checkout → input items, calculate totals, update stock). Abstract to hide GUI concerns.</p>
+
+        <h2 class="font-semibold">Searching & Sorting</h2>
+        <!-- include detailed pseudocode, tables, comparisons as earlier -->
+        <p><strong>Linear Search</strong>: Sequential scan; O(n).</p>
+        <p><strong>Binary Search</strong>: Sorted list; halving approach; O(log n).</p>
+        <p><strong>Bubble Sort</strong>: Repeated swaps; O(n²).</p>
+        <p><strong>Merge Sort</strong>: Divide and merge; O(n log n).</p>
+        <pre class="bg-gray-100 p-3 rounded text-sm">// Binary search pseudocode
+low ← 0; high ← len(list)-1
+WHILE low ≤ high
+  mid ← (low + high) DIV 2
+  IF list[mid] = target THEN RETURN mid
+  ELSE IF list[mid] < target THEN low ← mid + 1
+  ELSE high ← mid - 1
+ENDWHILE
+RETURN -1
+        </pre>
       </div>
     </div>
 
-    <!-- 3.2 Programming Fundamentals -->
-    <div class="border rounded bg-white shadow">
-      <button onclick="toggleContent('topic-32')" class="w-full text-left px-6 py-4 text-xl font-semibold hover:bg-gray-100">3.2 Programming Fundamentals</button>
-      <div id="topic-32" class="px-6 py-4 hidden text-gray-700 space-y-3">
-        <p>Core programming principles: students must understand how to write, test, and refine code.</p>
-        <ul class="list-disc pl-6">
-          <li><strong>Data Types & Variables</strong>: integers, strings, booleans.</li>
-          <li><strong>Operators</strong>: arithmetic, Boolean logic.</li>
-          <li><strong>Input/Output</strong>: reading user input and displaying output.</li>
-          <li><strong>Control Structures</strong>: IF, FOR, WHILE loops, nested selection/iteration.</li>
-          <li><strong>Subroutines</strong>: Functions & procedures to modularize code.</li>
-        </ul>
+    <!-- 3.2 Programming -->
+    <div class="bg-white rounded shadow">
+      <button onclick="toggleDropdown('topic-3-2')" class="w-full px-6 py-4 text-left text-xl font-semibold hover:bg-gray-50">3.2 Programming</button>
+      <div id="topic-3-2" class="hidden px-6 py-4 text-gray-700 space-y-4">
+        <h2 class="font-semibold">Data Types & Variables</h2>
+        <p>Integers, floats, booleans, strings; use correct types and variable names.</p>
+
+        <h2 class="font-semibold">Operators & Input/Output</h2>
+        <p>Arithmetic, logic. Example: <code>a = b + 5; if a > 10 and b < 20:</code></p>
+
+        <h2 class="font-semibold">Control Structures</h2>
+        <p>Use IF, IF-ELSE, nested ifs, FOR and WHILE loops. Example FOR loop to sum list.</p>
+
+        <h2 class="font-semibold">Subroutines</h2>
+        <p>Functions with parameters and return values. Example:</p>
+        <pre class="bg-gray-100 p-3 rounded text-sm">FUNCTION findMax(list)
+  max ← list[0]
+  FOR each item in list
+    IF item > max THEN max ← item
+  ENDFOR
+  RETURN max
+END FUNCTION
+        </pre>
+
+        <h2 class="font-semibold">Robustness & Testing</h2>
+        <p>Validation for input, trace tables to debug, testing scenarios including edge cases.</p>
       </div>
     </div>
 
     <!-- 3.3 Data Representation -->
-    <div class="border rounded bg-white shadow">
-      <button onclick="toggleContent('topic-33')" class="w-full text-left px-6 py-4 text-xl font-semibold hover:bg-gray-100">3.3 Data Representation</button>
-      <div id="topic-33" class="px-6 py-4 hidden text-gray-700 space-y-3">
-        <p>Explore how data is stored and processed:</p>
-        <ul class="list-disc pl-6">
-          <li><strong>Number Bases</strong>: binary (base-2), hexadecimal (base-16), conversions to/from decimal :contentReference[oaicite:2]{index=2}.</li>
-          <li><strong>Units of Data</strong>: bits/bytes; kilo/mega/giga/tera prefixes.</li>
-          <li><strong>Binary Arithmetic</strong>: addition and bit-shifts.</li>
-          <li><strong>Character Encoding</strong>: ASCII & Unicode.</li>
-          <li><strong>Image/Sound Representation</strong>: pixels, colour depth; sampling rate, bit resolution.</li>
-          <li><strong>Compression</strong>: Huffman coding, run-length encoding.</li>
-        </ul>
+    <div class="bg-white rounded shadow">
+      <button onclick="toggleDropdown('topic-3-3')" class="w-full px-6 py-4 text-left text-xl font-semibold hover:bg-gray-50">3.3 Data Representation</button>
+      <div id="topic-3-3" class="hidden px-6 py-4 text-gray-700 space-y-4">
+        <h2 class="font-semibold">Binary & Hexadecimal</h2>
+        <p>Convert between bases using positional weights. Example: 1011 → 8+2+1 = 11.</p>
+
+        <h2 class="font-semibold">Data Units & Encoding</h2>
+        <p>Bits/bytes; ASCII vs Unicode (international text). Images stored as pixels*depth; sound uses sampling rate and bit depth.</p>
+
+        <h2 class="font-semibold">Compression</h2>
+        <p>Lossless (RLE/Huffman) vs lossy (JPEG/MP3). Include trade-offs.</p>
       </div>
     </div>
 
     <!-- 3.4 Computer Systems -->
-    <div class="border rounded bg-white shadow">
-      <button onclick="toggleContent('topic-34')" class="w-full text-left px-6 py-4 text-xl font-semibold hover:bg-gray-100">3.4 Computer Systems</button>
-      <div id="topic-34" class="px-6 py-4 hidden text-gray-700 space-y-3">
-        <p>Understand the architecture and performance of computer hardware:</p>
-        <ul class="list-disc pl-6">
-          <li><strong>CPU & Fetch-Execute</strong>: registers, ALU, CU, cache, Von Neumann model :contentReference[oaicite:3]{index=3}.</li>
-          <li><strong>Memory</strong>: RAM, ROM, cache – volatile vs. non-volatile.</li>
-          <li><strong>Secondary Storage</strong>: SSD, HDD, optical – pros/cons.</li>
-          <li><strong>Embedded Systems</strong>: special-purpose computers.</li>
-        </ul>
-        <p><strong>Performance Factors:</strong> clock speed, cores, cache size.</p>
+    <div class="bg-white rounded shadow">
+      <button onclick="toggleDropdown('topic-3-4')" class="w-full px-6 py-4 text-left text-xl font-semibold hover:bg-gray-50">3.4 Computer Systems</button>
+      <div id="topic-3-4" class="hidden px-6 py-4 text-gray-700 space-y-4">
+        <p><strong>CPU</strong>: ALU (calculates), CU (controls), registers (MAR, MDR, PC, ACC).</p>
+        <p><strong>Fetch‑Decode‑Execute:</strong> Explain step-by-step cycle diagram placeholder.</p>
+        <p><strong>Memory & Storage:</strong> RAM vs ROM vs cache; SSD/HDD/optical pros/cons.</p>
+        <p><strong>Software:</strong> System and application; translators (compiler, interpreter, assembler).</p>
+        <p><strong>Embedded Systems:</strong> Purpose-built devices, efficient and cost-effective.</p>
       </div>
     </div>
 
-    <!-- 3.5 Computer Networks -->
-    <div class="border rounded bg-white shadow">
-      <button onclick="toggleContent('topic-35')" class="w-full text-left px-6 py-4 text-xl font-semibold hover:bg-gray-100">3.5 Computer Networks</button>
-      <div id="topic-35" class="px-6 py-4 hidden text-gray-700 space-y-3">
-        <p>Key network concepts:</p>
-        <ul class="list-disc pl-6">
-          <li><strong>LAN/WAN</strong> and common topologies.</li>
-          <li><strong>Networking Hardware & Protocols</strong>: switches, routers, Ethernet, TCP/IP.</li>
-          <li><strong>Network Security</strong>: firewalls, anti-malware, encryption, types of attack. :contentReference[oaicite:4]{index=4}</li>
-        </ul>
+    <!-- 3.5 Networks -->
+    <div class="bg-white rounded shadow">
+      <button onclick="toggleDropdown('topic-3-5')" class="w-full px-6 py-4 text-left text-xl font-semibold hover:bg-gray-50">3.5 Networks</button>
+      <div id="topic-3-5" class="hidden px-6 py-4 text-gray-700 space-y-4">
+        <p><strong>Network types:</strong> LAN, WAN, client-server vs peer-to-peer.</p>
+        <p><strong>Topology & Hardware:</strong> Star, bus, ring; routers, switches, NIC, cables.</p>
+        <p><strong>Protocols:</strong> TCP/IP stack, HTTP/HTTPS, FTP, SMTP, DNS explanations.</p>
+        <p><strong>Security & Cloud:</strong> Encryption (SSL/TLS), firewalls, passwords; pros/cons of cloud vs local storage.</p>
       </div>
     </div>
 
     <!-- 3.6 Cyber Security -->
-    <div class="border rounded bg-white shadow">
-      <button onclick="toggleContent('topic-36')" class="w-full text-left px-6 py-4 text-xl font-semibold hover:bg-gray-100">3.6 Cyber Security</button>
-      <div id="topic-36" class="px-6 py-4 hidden text-gray-700 space-y-3">
-        <p>Protecting systems and data:</p>
-        <ul class="list-disc pl-6">
-          <li>Malware types: viruses, worms, trojans, ransomware.</li>
-          <li>Social engineering: phishing, pharming.</li>
-          <li><strong>Prevention:</strong> passwords, authentication, anti-malware, encryption, software updates.</li>
-        </ul>
+    <div class="bg-white rounded shadow">
+      <button onclick="toggleDropdown('topic-3-6')" class="w-full px-6 py-4 text-left text-xl font-semibold hover:bg-gray-50">3.6 Cyber Security</button>
+      <div id="topic-3-6" class="hidden px-6 py-4 text-gray-700 space-y-4">
+        <p><strong>Malware:</strong> Viruses, worms, trojans, ransomware, spyware.</p>
+        <p><strong>Social Engineering:</strong> Phishing, pharming, blagging, shoulder surfing.</p>
+        <p><strong>Protection:</strong> Passwords, biometrics, multi-factor auth, firewalls, updates.</p>
+        <p><strong>Legal/Ethical:</strong> Data Protection Act, Computer Misuse Act explained.</p>
       </div>
     </div>
 
     <!-- 3.7 Databases & SQL -->
-    <div class="border rounded bg-white shadow">
-      <button onclick="toggleContent('topic-37')" class="w-full text-left px-6 py-4 text-xl font-semibold hover:bg-gray-100">3.7 Databases & SQL</button>
-      <div id="topic-37" class="px-6 py-4 hidden text-gray-700 space-y-3">
-        <p>Managing and querying data:</p>
-        <ul class="list-disc pl-6">
-          <li><strong>Relational databases</strong>: tables linked by keys.</li>
-          <li><strong>SQL</strong>: SELECT, INSERT, UPDATE, DELETE queries.</li>
-        </ul>
+    <div class="bg-white rounded shadow">
+      <button onclick="toggleDropdown('topic-3-7')" class="w-full px-6 py-4 text-left text-xl font-semibold hover:bg-gray-50">3.7 Databases & SQL</button>
+      <div id="topic-3-7" class="hidden px-6 py-4 text-gray-700 space-y-4">
+        <p><strong>Relational databases:</strong> tables with keys for relationships.</p>
+        <p><strong>SQL:</strong> SELECT, INSERT, UPDATE, DELETE; WHERE, ORDER BY, JOIN.</p>
+        <p><strong>Integrity:</strong> Constraints like NOT NULL, UNIQUE, primary and foreign keys; normalization basics.</p>
       </div>
     </div>
 
-    <!-- 3.8 Ethical, Legal & Environmental Impacts -->
-    <div class="border rounded bg-white shadow">
-      <button onclick="toggleContent('topic-38')" class="w-full text-left px-6 py-4 text-xl font-semibold hover:bg-gray-100">3.8 Ethics, Law & Environmental Impacts</button>
-      <div id="topic-38" class="px-6 py-4 hidden text-gray-700 space-y-3">
-        <p>How technology impacts society:</p>
-        <ul class="list-disc pl-6">
-          <li>Privacy concerns, hacking, surveillance.</li>
-          <li>Legislation: Data Protection Act, Computer Misuse Act.</li>
-          <li>Ethical issues: AI, digital divide.</li>
-          <li>Environmental impacts: e-waste, energy use of data centres. :contentReference[oaicite:5]{index=5}</li>
-        </ul>
+    <!-- 3.8 Impacts & Issues -->
+    <div class="bg-white rounded shadow">
+      <button onclick="toggleDropdown('topic-3-8')" class="w-full px-6 py-4 text-left text-xl font-semibold hover:bg-gray-50">3.8 Impacts of Technology</button>
+      <div id="topic-3-8" class="hidden px-6 py-4 text-gray-700 space-y-4">
+        <p><strong>Privacy & Surveillance:</strong> Data collection mechanisms, GDPR, CCTV, cookies.</p>
+        <p><strong>Ethics:</strong> AI bias, digital divide, hacker responsibility.</p>
+        <p><strong>Legal:</strong> GDPR, Data Protection Act 2018, Computer Misuse Act 1990.</p>
+        <p><strong>Environmental:</strong> E-waste disposal, carbon emissions from data centres, sustainable computing.</p>
       </div>
     </div>
 
