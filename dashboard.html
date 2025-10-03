@@ -15,41 +15,39 @@
 <body class="bg-gray-50 text-gray-900">
  
   <!-- Header -->
-  <header class="bg-white shadow-sm p-4 fixed top-0 left-0 right-0 z-50">
-    <div class="max-w-7xl mx-auto flex justify-between items-center">
-      <div class="flex items-center space-x-3">
+  <header class="bg-white shadow-sm px-4 py-3 fixed top-0 left-0 right-0 z-50">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
+      <div class="flex items-center space-x-3 w-full sm:w-auto justify-center sm:justify-start">
         <img src="assets/ReviseCSlogo.png" alt="ReviseCS Logo" class="h-8">
         <span class="text-xl font-bold">Revise<span class="text-blue-600">CS</span></span>
       </div>
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-4 w-full sm:w-auto justify-center sm:justify-end">
         <span id="user-email" class="text-sm text-gray-700"></span>
-        <button id="logoutBtn" class="text-sm text-red-500 hover:underline">Logout</button>
+        <button id="logoutBtn" class="text-sm text-red-500 hover:underline px-3 py-2 rounded">Logout</button>
       </div>
     </div>
   </header>
 
  
   <!-- Main Content -->
-  <main class="pt-24 max-w-6xl mx-auto px-6">
-    <h1 class="text-3xl font-bold mb-6">Welcome back <span id="user-name">👋</span></h1>
-     
+  <main class="pt-24 max-w-6xl mx-auto px-4 sm:px-6">
+    <h1 class="text-2xl sm:text-3xl font-bold mb-6 text-center sm:text-left">Welcome back <span id="user-name">👋</span></h1>
     <div class="mb-8">
-      <h2 class="text-xl font-semibold mb-2">Choose Your Qualification Level</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <a href="gcses\gcse.html" class="bg-white p-6 rounded-xl border shadow hover:shadow-md transition block">
-          <h3 class="text-lg font-semibold">GCSE</h3>
-          <p class="text-gray-600 text-sm mt-2">Explore GCSE-aligned topics depending on your exam board.</p>
+      <h2 class="text-lg sm:text-xl font-semibold mb-2 text-center sm:text-left">Choose Your Qualification Level</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <a href="gcses/gcse.html" class="bg-white p-5 sm:p-6 rounded-xl border shadow hover:shadow-md transition block">
+          <h3 class="text-base sm:text-lg font-semibold">GCSE</h3>
+          <p class="text-gray-600 text-xs sm:text-sm mt-2">Explore GCSE-aligned topics depending on your exam board.</p>
         </a>
-        <a href="alevels\alevel.html" class="bg-white p-6 rounded-xl border shadow hover:shadow-md transition block">
-          <h3 class="text-lg font-semibold">A-Level</h3>
-          <p class="text-gray-600 text-sm mt-2">Start revising A-Level Computer Science topics now.</p>
+        <a href="alevels/alevel.html" class="bg-white p-5 sm:p-6 rounded-xl border shadow hover:shadow-md transition block">
+          <h3 class="text-base sm:text-lg font-semibold">A-Level</h3>
+          <p class="text-gray-600 text-xs sm:text-sm mt-2">Start revising A-Level Computer Science topics now.</p>
         </a>
       </div>
     </div>
-     
     <div>
-      <h2 class="text-xl font-semibold mb-2">Recently Accessed</h2>
-      <p class="text-gray-500 text-sm">Coming soon...</p>
+      <h2 class="text-lg sm:text-xl font-semibold mb-2 text-center sm:text-left">Recently Accessed</h2>
+      <p class="text-gray-500 text-xs sm:text-sm">Coming soon...</p>
     </div>
   </main>
  
