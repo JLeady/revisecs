@@ -22,6 +22,7 @@
         <span class="text-xl font-bold">Revise<span class="text-blue-600">CS</span></span>
       </div>
       <div class="flex items-center space-x-4 w-full sm:w-auto justify-center sm:justify-end">
+        <button id="themeToggle" class="text-gray-600 hover:text-orange transition" title="Toggle Dark Mode">🌓</button>
         <span id="user-email" class="text-sm text-gray-700"></span>
         <button id="logoutBtn" class="text-sm text-red-500 hover:underline px-3 py-2 rounded">Logout</button>
       </div>
@@ -96,6 +97,12 @@
     logoutBtn.addEventListener('click', async () => {
       await client.auth.signOut();
       window.location.href = 'index.html';
+    });
+    // Dark mode toggle script
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    themeToggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
     });
   </script>
 </body>

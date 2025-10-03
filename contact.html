@@ -27,7 +27,8 @@
         <a href="about.html" class="text-blue-600 font-semibold">About</a>
         <a href="contact.html" class="hover:text-blue-600">Contact</a>
       </nav>
-      <div class="space-x-4 text-sm">
+      <div class="space-x-4 text-sm flex items-center">
+        <button id="themeToggle" class="text-gray-600 hover:text-orange transition" title="Toggle Dark Mode">🌓</button>
         <a href="login.html" class="text-gray-600 hover:text-blue-600">Login</a>
         <a href="signup.html" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition">Sign Up</a>
       </div>
@@ -87,5 +88,13 @@
       <p class="mb-3">ReviseCS — Learn. Revise. Succeed.</p>
       <p class="text-xs">© 2025 ReviseCS. All rights reserved.</p>
     </footer>
+    <!-- Dark mode toggle script -->
+    <script>
+      const toggle = document.getElementById('themeToggle');
+      const html = document.documentElement;
+      toggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+      });
+    </script>
   </body>
 </html>
